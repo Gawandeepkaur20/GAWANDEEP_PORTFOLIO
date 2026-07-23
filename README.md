@@ -38,7 +38,7 @@ npm run build
 
 ## 🌐 Live Demo
 
-👉https://gawandeep-portfolio-as3yi97wz-gawandeepkaur20s-projects.vercel.app
+👉https://gawandeep-portfolio.vercel.app/
 
 
 ## 📬 Contact
