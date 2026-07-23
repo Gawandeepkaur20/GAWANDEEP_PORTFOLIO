@@ -1,0 +1,1 @@
+import{j as o,a as s}from"./index-DtxsmASF.js";function t({className:r,elevated:a=!1,...e}){return o.jsx("div",{className:s("rounded-lg border border-border/80 bg-surface/78 p-5 backdrop-blur-xl transition duration-300",a&&"bg-surface-elevated shadow-soft-xl",r),...e})}export{t as C};
