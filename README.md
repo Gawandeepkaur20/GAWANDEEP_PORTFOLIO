@@ -1,29 +1,52 @@
-# Gawandeep Kaur Portfolio
+# 🚀 Gawandeep Kaur Portfolio
 
-Premium personal portfolio foundation for **Gawandeep Kaur**, AI Engineer and Full Stack Developer.
+A modern and responsive developer portfolio showcasing my projects, skills, certifications, and experience in AI, Full Stack Development, and Web Technologies.
 
-## Stack
+## ✨ Features
 
-React 19, Vite, TypeScript, Tailwind CSS, shadcn-style primitives, Framer Motion, GSAP, React Three Fiber, Three.js, React Router, Lucide React, Lenis, React Helmet.
+- Responsive UI
+- Smooth Animations
+- Interactive Project Gallery
+- Resume Download
+- Certifications Section
+- GitHub & Live Project Links
 
-## Getting Started
+## 🛠️ Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Framer Motion
+- GSAP
+- React Router
+- Three.js
+
+## 🚀 Run Locally
 
 ```bash
+git clone https://github.com/Gawandeepkaur20/GAWANDEEP_PORTFOLIO.git
+cd GAWANDEEP_PORTFOLIO
 npm install
 npm run dev
 ```
 
-## Architecture
+## 📦 Build
 
-- `src/app` app providers and root composition
-- `src/layouts` reusable page chrome and transitions
-- `src/components` shared UI and typography primitives
-- `src/sections` landing page sections
-- `src/animations` reusable motion presets
-- `src/hooks` interaction and lifecycle hooks
-- `src/routes` route definitions and lazy route elements
-- `src/styles` global CSS, design tokens, and theme variables
-- `src/constants` navigation and site metadata
-- `src/types` shared TypeScript models
+```bash
+npm run build
+```
 
-Future feature modules are intentionally reserved for projects, AI assistant, GitHub integration, certifications, timeline, and contact workflows.
+## 🌐 Live Demo
+
+👉https://gawandeep-portfolio-as3yi97wz-gawandeepkaur20s-projects.vercel.app
+
+
+## 📬 Contact
+
+- **GitHub:** https://github.com/Gawandeepkaur20
+
+- **Gmail:** gawandeep75@gmail.com
+
+---
+
+⭐ If you like this project, consider giving it a star!
