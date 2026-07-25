@@ -2,7 +2,6 @@ import { Download, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
-import { LinkButton } from "@/components/ui/LinkButton";
 import { Section } from "@/components/ui/Section";
 import { currentStack } from "@/data/portfolio";
 import { fadeUp } from "@/animations/motion";
