@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Download, Maximize2, Minus, Plus, Printer } from "lucide-react";
+import { Download, Maximize2,  Printer } from "lucide-react";
 import { PageTransition } from "@/layouts/PageTransition";
 import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/Button";
@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { cn } from "@/utils/cn";
 
 export default function ResumeViewerPage() {
-  const [zoom, setZoom] = useState(100);
+
   const [fullscreen, setFullscreen] = useState(false);
 
   return (
@@ -21,8 +21,7 @@ export default function ResumeViewerPage() {
               <h1 className="mt-3 font-display text-4xl font-semibold">Preview the professional summary.</h1>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Button variant="outline" onClick={() => setZoom((value) => Math.max(75, value - 10))}><Minus className="h-4 w-4" /> Zoom</Button>
-              <Button variant="outline" onClick={() => setZoom((value) => Math.min(140, value + 10))}><Plus className="h-4 w-4" /> Zoom</Button>
+
               <Button variant="outline" onClick={() => window.print()}><Printer className="h-4 w-4" /> Print</Button>
               <Button variant="outline" onClick={() => setFullscreen((value) => !value)}><Maximize2 className="h-4 w-4" /> Fullscreen</Button>
               <a href="/GAWANDEEPKAUR_CV.pdf" className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground"><Download className="h-4 w-4" /> Download</a>
