@@ -8,16 +8,18 @@ export type SkillCategory =
   | "Databases"
   | "Languages"
   | "Tools"
-  | "Soft Skills";
+  | "Soft Skills"
+  | "Mobile Development"
+;
 
 export type Skill = {
   name: string;
   category: SkillCategory;
-  level: "Exploring" | "Working" | "Confident" | "Advanced";
+  level: "Exploring" | "Working" | "Confident" | "Advanced" | "Intermediate" ;
   icon: string;
 };
 
-export type ProjectCategory = "AI" | "MERN" | "Flutter" | "Python" | "Web" | "Mobile" | "Full Stack" |"Computer Vision";
+export type ProjectCategory = "AI" | "MERN" | "Flutter" | "Python" | "Web" | "Mobile" | "Full Stack" |"Computer Vision" ;
 export interface ProjectImage {
   src: string;
   title: string;

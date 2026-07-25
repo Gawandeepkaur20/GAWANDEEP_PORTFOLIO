@@ -75,10 +75,14 @@ export const currentStack = [
   "Firebase",
   "Google Cloud",
   "Tailwind CSS",
+  "HTML",
+  "Flutter",
 ];
 
 export const skills: Skill[] = [
   { name: "React", category: "Frontend", level: "Advanced", icon: "Atom" },
+  { name: "Flutter", category: "Mobile Development", level: "Intermediate", icon: "Smartphone" },
+  { name: "Dart",  category: "Languages", level: "Intermediate", icon: "Code2" },
   { name: "TypeScript", category: "Frontend", level: "Confident", icon: "Braces" },
   { name: "Tailwind CSS", category: "Frontend", level: "Confident", icon: "Palette" },
   { name: "Node.js", category: "Backend", level: "Confident", icon: "Server" },

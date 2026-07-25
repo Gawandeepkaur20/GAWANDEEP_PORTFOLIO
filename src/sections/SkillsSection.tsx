@@ -5,7 +5,7 @@ import { skills } from "@/data/portfolio";
 import { fadeUp, hoverLift, staggerContainer } from "@/animations/motion";
 import { iconMap } from "@/utils/iconMap";
 
-const categories = ["Frontend", "Backend", "AI", "Cloud", "Databases", "Languages", "Tools", "Soft Skills"] as const;
+const categories = ["Frontend","Mobile Development", "Backend", "AI", "Cloud", "Databases", "Languages", "Tools", "Soft Skills"] as const;
 
 export function SkillsSection() {
   return (

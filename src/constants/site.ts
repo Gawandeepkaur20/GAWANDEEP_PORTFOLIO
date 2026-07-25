@@ -4,12 +4,12 @@ export const siteConfig = {
   name: "Gawandeep Kaur",
   role: "AI Engineer | Full Stack Developer",
   tagline: "Building intelligent software that solves real-world problems.",
-  url: import.meta.env.VITE_SITE_URL ?? "https://gawandeepkaur.dev",
+  url: import.meta.env.VITE_SITE_URL ?? "https://gawandeep-portfolio.vercel.app",
   description:
-    "Portfolio foundation for Gawandeep Kaur, an AI Engineer and Full Stack Developer focused on intelligent, reliable software.",
+  "Personal portfolio of Gawandeep Kaur showcasing AI, Full Stack, and Computer Vision projects, technical skills, and professional experience.",
   social: {
     github: "https://github.com/Gawandeepkaur20",
-    linkedin: "www.linkedin.com/in/gawandeep-kaur-b2671b322",
+    linkedin: "https://www.linkedin.com/in/gawandeep-kaur-b2671b322/",
     email: "mailto:gawandeep75@gmail.com",
   },
 };

@@ -9,7 +9,7 @@ const modules = [
   { title: "AI Assistant", description: "Ask portfolio-aware questions backed by a local knowledge base.", href: "/assistant", icon: Bot },
   { title: "GitHub Dashboard", description: "Live profile, repositories, languages, stars, forks, and search.", href: "/github", icon: Github },
   { title: "Contact System", description: "Validated EmailJS-ready contact flow with spam and rate protection.", href: "/contact", icon: Mail },
-  { title: "Resume Viewer", description: "Preview, zoom, print, fullscreen, and download resume controls.", href: "/resume", icon: FileText },
+  { title: "Resume Viewer", description: "Preview, zoom, print, fullscreen, and download resume controls.", href: "/GAWANDEEPKAUR_CV", icon: FileText },
   { title: "Analytics", description: "Animated portfolio metrics with analytics integration points.", href: "/analytics", icon: BarChart3 },
   { title: "Global Search", description: "Press Ctrl+K to search projects, skills, sections, and achievements.", href: "#projects", icon: Search },
 ];

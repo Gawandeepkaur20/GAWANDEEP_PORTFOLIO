@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "resume",
+        path: "GAWANDEEPKAUR_CV",
         element: (
           <Suspense fallback={routeFallback}>
             <ResumeViewerPage />

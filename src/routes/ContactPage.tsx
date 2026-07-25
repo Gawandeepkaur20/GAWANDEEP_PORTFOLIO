@@ -59,7 +59,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8 space-y-3 text-sm">
               <a className="flex items-center gap-3 rounded-md p-3 hover:bg-muted" href={siteConfig.social.email}>
-                <Mail className="h-4 w-4 text-primary" /> hello@gawandeepkaur.dev
+                <Mail className="h-4 w-4 text-primary" /> gawandeep75@gmail.com
               </a>
               <a className="flex items-center gap-3 rounded-md p-3 hover:bg-muted" href={siteConfig.social.github}>
                 <Github className="h-4 w-4 text-primary" /> GitHub
