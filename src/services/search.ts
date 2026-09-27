@@ -1,4 +1,4 @@
-import { achievements, experiences, projects, skills } from "@/data/portfolio";
+import { achievements, additionalProjects, experiences, projects, researchWork, skills } from "@/data/portfolio";
 
 export type SearchResult = {
   id: string;
@@ -10,10 +10,14 @@ export type SearchResult = {
 
 export const searchableItems: SearchResult[] = [
   { id: "about", title: "About", description: "Profile, education, focus, and current stack.", href: "#about", type: "Section" },
+  { id: "skills", title: "Skills", description: "Frontend, backend, AI, database, mobile, language, tool, and core concept skills.", href: "#skills", type: "Section" },
+  { id: "experience", title: "Experience", description: "AI and MERN internship timeline.", href: "#experience", type: "Section" },
   { id: "projects", title: "Projects", description: "Case studies and project filters.", href: "#projects", type: "Section" },
+  { id: "research", title: "Research", description: "Academic research at Punjabi University Patiala.", href: "#research", type: "Section" },
+  { id: "certifications", title: "Certificates", description: "Cybersecurity, AI, and database certifications.", href: "#certifications", type: "Section" },
   { id: "assistant", title: "AI Assistant", description: "Ask questions about Gawandeep's portfolio.", href: "/assistant", type: "Section" },
   { id: "github", title: "GitHub Dashboard", description: "Repository and technology analytics.", href: "/github", type: "Section" },
-  ...projects.map((project) => ({
+  ...[...projects, ...additionalProjects].map((project) => ({
     id: project.slug,
     title: project.title,
     description: project.overview,
@@ -40,6 +44,13 @@ export const searchableItems: SearchResult[] = [
     description: achievement.description,
     href: "#achievements",
     type: "Achievement" as const,
+  })),
+  ...researchWork.map((research) => ({
+    id: `research-${research.duration}`,
+    title: research.title,
+    description: research.description,
+    href: "#research",
+    type: "Section" as const,
   })),
 ];
 

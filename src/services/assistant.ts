@@ -10,18 +10,7 @@ export type ChatMessage = {
   createdAt: string;
 };
 
-export const suggestedQuestions = [
-  "Tell me about Gawandeep.",
-  "Explain Signal Zero.",
-  "Explain Career Pilot AI.",
-  "Explain Boutique Management System.",
-  "Explain Object Detection & Tracking.",
-  "Tell me about the AI Blog Website.",
-  "What technologies does she use?",
-  "Summarize her internship experience.",
-  "Which AI projects has she built?",
-  "What leadership experience does she have?"
-];
+const allProjects = [...knowledgeBase.projects, ...knowledgeBase.additionalProjects];
 
 function formatProject(project: Project) {
   return [
@@ -36,10 +25,70 @@ function formatProject(project: Project) {
   ].join("\n\n");
 }
 
+const projectBySlug = (slug: string) => allProjects.find((project) => project.slug === slug);
+
+function requiredProjectAnswer(slug: string) {
+  const project = projectBySlug(slug);
+  return project ? formatProject(project) : "That project is not available in the portfolio knowledge base.";
+}
+
+export const quickQuestions = [
+  {
+    question: "Tell me about Gawandeep.",
+    answer: () => `${knowledgeBase.profile.summary}\n\n**Education:** ${knowledgeBase.education.degree}, ${knowledgeBase.education.university}.\n\n**Current strengths:** ${knowledgeBase.profile.strengths.join(", ")}.`,
+  },
+  { question: "Explain Signal Zero.", answer: () => requiredProjectAnswer("signal-zero") },
+  { question: "Explain CareerPilot AI.", answer: () => requiredProjectAnswer("career-pilot-ai") },
+  { question: "Explain Boutique Management System.", answer: () => requiredProjectAnswer("boutique-management-system") },
+  { question: "Explain VisionGuard.", answer: () => requiredProjectAnswer("object-detection-tracking") },
+  { question: "Tell me about ZENTICLE.", answer: () => requiredProjectAnswer("zenticle-blog-writing-platform") },
+  {
+    question: "What technologies does she use?",
+    answer: () => {
+      const grouped = knowledgeBase.skills.reduce<Record<string, string[]>>((acc, skill) => {
+        acc[skill.category] = [...(acc[skill.category] ?? []), skill.name];
+        return acc;
+      }, {});
+      return Object.entries(grouped)
+        .map(([category, items]) => `**${category}:** ${items.join(", ")}`)
+        .join("\n\n");
+    },
+  },
+  {
+    question: "Summarize her internship experience.",
+    answer: () => knowledgeBase.experience
+      .filter((item) => item.role.toLowerCase().includes("intern"))
+      .map((item) => `## ${item.role}\n**${item.organization}** (${item.duration})\n\n${item.responsibilities.join("\n")}`)
+      .join("\n\n---\n\n"),
+  },
+  {
+    question: "Which AI projects has she built?",
+    answer: () => allProjects.filter((item) => item.categories.includes("AI")).map(formatProject).join("\n\n---\n\n"),
+  },
+  {
+    question: "What leadership experience does she have?",
+    answer: () => {
+      const leadership = knowledgeBase.achievements.find((item) => item.label.toLowerCase().includes("web development lead"));
+      return leadership
+        ? `**${leadership.label}**\n\n${leadership.meta}\n\n${leadership.description}`
+        : "Leadership information is not available in the portfolio knowledge base.";
+    },
+  },
+] as const;
+
+export const suggestedQuestions = quickQuestions.map((item) => item.question);
+
+const quickQuestionLookup = new Map(
+  quickQuestions.map((item) => [item.question.trim().toLowerCase(), item.answer]),
+);
+
 function answerFromLocalKnowledge(question: string) {
-  const q = question.toLowerCase();
+  const q = question.trim().toLowerCase();
+  const quickAnswer = quickQuestionLookup.get(q);
+
+  if (quickAnswer) return quickAnswer();
   
-  const project = knowledgeBase.projects.find((item) => {
+  const project = allProjects.find((item) => {
   const search = [
     item.title,
     item.slug,
@@ -50,8 +99,8 @@ function answerFromLocalKnowledge(question: string) {
     .join(" ")
     .toLowerCase();
 
-  return q.split(" ").some((word) => search.includes(word));
-});
+    return q.split(/\s+/).filter((word) => word.length > 3).some((word) => search.includes(word));
+  });
 
   if (project) {
     return formatProject(project);
@@ -90,15 +139,13 @@ return internships
     (item) =>
       `## ${item.role}\n**${item.organization}** (${item.duration})
 
-${item.responsibilities.join("\n")}
-
-**Achievements:** ${item.achievements.join(", ")}`
+${item.responsibilities.join("\n")}`
   )
   .join("\n\n---\n\n");
   }
 
   if (q.includes("ai project") || (q.includes("which project") && q.includes("ai"))) {
-    const aiProjects = knowledgeBase.projects.filter((item) => item.categories.includes("AI"));
+    const aiProjects = allProjects.filter((item) => item.categories.includes("AI"));
     return aiProjects.map(formatProject).join("\n\n---\n\n");
   }
 if (
@@ -106,7 +153,7 @@ if (
   q.includes("tracking") ||
   q.includes("computer vision")
 ) {
-  const project = knowledgeBase.projects.find(
+  const project = allProjects.find(
     (p) => p.slug === "object-detection-tracking"
   );
 
@@ -118,7 +165,7 @@ if (
   q.includes("signal zero") ||
   q.includes("visual novel")
 ) {
-  const project = knowledgeBase.projects.find(
+  const project = allProjects.find(
     (p) => p.slug === "signal-zero"
   );
 
@@ -130,7 +177,7 @@ if (
   q.includes("career pilot") ||
   q.includes("resume")
 ) {
-  const project = knowledgeBase.projects.find(
+  const project = allProjects.find(
     (p) => p.slug === "career-pilot-ai"
   );
 
@@ -140,27 +187,28 @@ if (
 }
 if (
   q.includes("blog") ||
-  q.includes("ai blog")
+  q.includes("ai blog") ||
+  q.includes("zenticle")
 ) {
-  const project = knowledgeBase.projects.find(
-    (p) => p.slug === "ai-blog-website"
+  const project = allProjects.find(
+    (p) => p.slug === "zenticle-blog-writing-platform"
   );
 
   return project
     ? formatProject(project)
-    : "Blog Website project not found.";
+    : "ZENTICLE project not found.";
 }
   if (q.includes("flutter")) {
-    const flutterProjects = knowledgeBase.projects.filter((item) => item.categories.includes("Flutter") || item.techStack.includes("Flutter"));
+    const flutterProjects = allProjects.filter((item) => item.categories.includes("Flutter") || item.techStack.includes("Flutter") || item.techStack.includes("Dart"));
     return flutterProjects.length > 0
       ? flutterProjects.map(formatProject).join("\n\n---\n\n")
       : "No Flutter projects are available in the portfolio knowledge base.";
   }
 
   if (q.includes("leadership") || q.includes("gdg")) {
-    const leadership = knowledgeBase.experience.find((item) => item.role.toLowerCase().includes("lead"));
+    const leadership = knowledgeBase.achievements.find((item) => item.label.toLowerCase().includes("web development lead"));
     return leadership
-      ? `**${leadership.role}, ${leadership.organization} (${leadership.duration})**\n\n${leadership.responsibilities.join("\n\n")}\n\n**Key achievements:** ${leadership.achievements.join(", ")}.`
+      ? `**${leadership.label}**\n\n${leadership.meta}\n\n${leadership.description}`
       : "Leadership information is not available in the portfolio knowledge base.";
   }
 
@@ -169,12 +217,12 @@ if (
   }
 
   if (q.includes("education") || q.includes("university")) {
-    return `Gawandeep is pursuing **${knowledgeBase.education.degree}** at **${knowledgeBase.education.university}**. Expected graduation: **${knowledgeBase.education.expectedGraduation}**.`;
+    return `Gawandeep is pursuing **${knowledgeBase.education.degree}** at **${knowledgeBase.education.university}** (${knowledgeBase.education.duration}). CGPA: **${knowledgeBase.education.cgpa}**.`;
   }
 
   if (q.includes("achievement") || q.includes("certificate")) {
     return [
-      `**Achievements:** ${knowledgeBase.achievements.map((item) => item.label).join(", ")}.`,
+      `**Achievements:** ${knowledgeBase.achievements.map((item) => `${item.label} - ${item.meta}`).join(", ")}.`,
       `**Certifications:** ${knowledgeBase.certifications.map((item) => `${item.title} (${item.organization})`).join(", ")}.`,
     ].join("\n\n");
   }

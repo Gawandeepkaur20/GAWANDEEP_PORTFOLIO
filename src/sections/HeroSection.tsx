@@ -1,5 +1,5 @@
-import { ArrowDown, ArrowRight, Github, Linkedin, Mail } from "lucide-react";
-import { lazy, Suspense } from "react";
+import { ArrowDown, ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import { lazy, Suspense, useState } from "react";
 import { motion } from "framer-motion";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { TextReveal } from "@/components/typography/TextReveal";
@@ -12,6 +12,8 @@ const AmbientBackground = lazy(() =>
 );
 
 export function HeroSection() {
+  const [profileImageAvailable, setProfileImageAvailable] = useState(true);
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32">
       <HeroBackground />
@@ -20,7 +22,7 @@ export function HeroSection() {
       </Suspense>
 
       <div className="container relative z-10">
-        <div className="max-w-5xl">
+        <div className="grid items-center gap-8 xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -48,8 +50,8 @@ export function HeroSection() {
             </motion.p>
 
             <motion.p variants={fadeUp} className="max-w-2xl text-base leading-8 text-muted-foreground">
-              I design and ship intelligent web systems where product quality, resilient architecture,
-              and practical AI meet.
+              Computer Science undergraduate building practical AI and full-stack projects with Python,
+              React.js, Node.js, MongoDB, Streamlit, REST APIs, and LLM integration.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col gap-3 sm:flex-row">
@@ -57,8 +59,12 @@ export function HeroSection() {
                 View Projects
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </LinkButton>
+              <LinkButton href="/GAWANDEEPKAUR_CV.pdf" size="lg" variant="outline">
+                Download Resume
+                <Download className="h-4 w-4" aria-hidden="true" />
+              </LinkButton>
               <LinkButton href="/contact" size="lg" variant="outline">
-                Start a Conversation
+                Contact Me
               </LinkButton>
             </motion.div>
 
@@ -74,6 +80,34 @@ export function HeroSection() {
               </a>
             </motion.div>
           </motion.div>
+
+          {profileImageAvailable && (
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="order-first mx-auto w-full max-w-[240px] sm:max-w-[270px] lg:order-none lg:max-w-[300px]"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+                className="relative"
+              >
+                
+               
+                  <div className="absolute inset-4 rounded-[28px] bg-primary/10 blur-2xl" aria-hidden="true" />
+               <div className="relative overflow-hidden rounded-[10px] border border-primary/30 bg-surface/80 p-2.5 shadow-[0_20px_60px_rgba(34,211,238,0.12)] backdrop-blur-sm">
+                  <img
+                    src="/profile.jpg"
+                    alt="Gawandeep Kaur"
+                    className="aspect-[4/5] w-full object-contain bg-white"
+                    onError={() => setProfileImageAvailable(false)}
+                  />
+               
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
         </div>
       </div>
 

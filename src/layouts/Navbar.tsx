@@ -1,4 +1,4 @@
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -34,9 +34,9 @@ export function Navbar() {
             <span className="grid h-10 w-10 place-items-center rounded-md bg-foreground text-sm font-bold text-background">
               GK
             </span>
-            <span className="hidden leading-tight sm:block">
-              <span className="block font-display text-sm font-semibold">Gawandeep Kaur</span>
-              <span className="block text-xs text-muted-foreground">AI Engineer</span>
+              <span className="hidden leading-tight sm:block">
+                <span className="block font-display text-sm font-semibold">Gawandeep Kaur</span>
+              <span className="block text-xs text-muted-foreground">AI & Full Stack Developer</span>
             </span>
           </NavLink>
 
@@ -84,16 +84,6 @@ export function Navbar() {
                 </NavLink>
               )
             ))}
-          </div>
-
-          <div className="hidden items-center gap-2 lg:flex">
-            <a
-              href="/GAWANDEEPKAUR_CV.pdf"
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-background/45 px-4 text-sm font-semibold transition hover:bg-muted"
-            >
-              <Download className="h-4 w-4" aria-hidden="true" />
-              Resume
-            </a>
           </div>
 
           <button
@@ -144,13 +134,6 @@ export function Navbar() {
                   </NavLink>
                 )
               ))}
-              <a
-                href="/GAWANDEEPKAUR_CV.pdf"
-                className="mt-2 flex items-center gap-2 rounded-md bg-primary px-3 py-3 text-sm font-semibold text-primary-foreground"
-              >
-                <Download className="h-4 w-4" aria-hidden="true" />
-                Resume
-              </a>
             </motion.div>
           )}
         </AnimatePresence>

@@ -1,4 +1,4 @@
-import { achievements, certificates, currentStack, experiences, projects, skills } from "@/data/portfolio";
+import { achievements, additionalProjects, certificates, currentStack, experiences, projects, researchWork, skills } from "@/data/portfolio";
 import { siteConfig } from "@/constants/site";
 
 export const knowledgeBase = {
@@ -7,33 +7,36 @@ export const knowledgeBase = {
     role: siteConfig.role,
     tagline: siteConfig.tagline,
     summary:
-      "Gawandeep Kaur is an AI Engineer and Full Stack Developer building intelligent software that solves real-world problems.",
+      "Gawandeep Kaur is a B.Tech Computer Science & Engineering student focused on AI and full-stack development.",
     strengths: [
       "AI product thinking",
       "Full stack implementation",
       "Responsive UI engineering",
-      "Technical leadership",
       "Problem solving",
-      "Automation mindset",
+      "Computer vision",
+      "LLM integration",
     ],
   },
   projects,
+  additionalProjects,
   experience: experiences,
+  research: researchWork,
   skills,
   education: {
-    degree: "B.Tech Computer Science Engineering",
+    degree: "B.Tech Computer Science & Engineering",
     university: "Punjabi University Patiala",
-    expectedGraduation: "2027",
-    interests: ["Artificial Intelligence", "Full Stack Development", "Developer Tools", "Automation", "Cloud"],
+    duration: "2023-2027",
+    cgpa: "8.72/10 up to 6th semester",
+    interests: ["Artificial Intelligence", "Full Stack Development", "LLM Integration", "Computer Vision"],
   },
   achievements,
   certifications: certificates,
   stack: currentStack,
   timeline: [
-    "B.Tech Computer Science Engineering at Punjabi University Patiala",
-    "Web Development Lead at Google Developer Groups on Campus",
-    "AI Intern at MirAI School of Technology",
-    "Portfolio foundation, case studies, and intelligent app modules",
+    "B.Tech Computer Science & Engineering at Punjabi University Patiala",
+    "MERN Stack Development Intern at Dotsquares Pvt. Ltd.",
+    "AI Intern at CodeAlpha",
+    "AI Intern at Mirai School of Technology",
   ],
 };
 

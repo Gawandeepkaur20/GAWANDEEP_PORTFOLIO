@@ -4,12 +4,11 @@ export type SkillCategory =
   | "Frontend"
   | "Backend"
   | "AI"
-  | "Cloud"
   | "Databases"
+  | "Mobile Development"
   | "Languages"
   | "Tools"
-  | "Soft Skills"
-  | "Mobile Development"
+  | "Core Concepts"
 ;
 
 export type Skill = {
@@ -41,7 +40,7 @@ export type Project = {
   metrics: string[];
   timeline: string;
   githubUrl: string;
-  demoUrl: string;
+  demoUrl?: string;
 };
 
 export type Experience = {
@@ -58,5 +57,5 @@ export type Certificate = {
   organization: string;
   issueDate: string;
   summary: string;
-  image:string;
+  image?: string;
 };

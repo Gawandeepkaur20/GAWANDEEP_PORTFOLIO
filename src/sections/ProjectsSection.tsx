@@ -14,10 +14,10 @@ import { Card } from "@/components/ui/Card";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { Section } from "@/components/ui/Section";
 import { fadeUp, hoverLift } from "@/animations/motion";
-import { projects } from "@/data/portfolio";
+import { additionalProjects, projects } from "@/data/portfolio";
 import type { Project, ProjectCategory } from "@/types/portfolio";
 
-const filters: Array<ProjectCategory | "All"> = ["All", "AI", "MERN", "Flutter", "Python", "Web", "Mobile", "Full Stack"];
+const filters: Array<ProjectCategory | "All"> = ["All", "AI", "MERN", "Python", "Web", "Full Stack", "Computer Vision"];
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
 
@@ -236,10 +236,12 @@ useEffect(() => {
               <Github className="h-4 w-4" aria-hidden="true" />
               GitHub
             </LinkButton>
-            <LinkButton href={project.demoUrl} target="_blank" rel="noreferrer">
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              Live Demo
-            </LinkButton>
+            {project.demoUrl && (
+              <LinkButton href={project.demoUrl} target="_blank" rel="noreferrer">
+                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                Live Demo
+              </LinkButton>
+            )}
           </div>
         </div>
       </motion.article>
@@ -255,6 +257,15 @@ export function ProjectsSection() {
   const filteredProjects = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return projects.filter((project) => {
+      const matchesFilter = activeFilter === "All" || project.categories.includes(activeFilter);
+      const searchable = `${project.title} ${project.overview} ${project.techStack.join(" ")}`.toLowerCase();
+      return matchesFilter && searchable.includes(normalized);
+    });
+  }, [activeFilter, query]);
+
+  const filteredAdditionalProjects = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return additionalProjects.filter((project) => {
       const matchesFilter = activeFilter === "All" || project.categories.includes(activeFilter);
       const searchable = `${project.title} ${project.overview} ${project.techStack.join(" ")}`.toLowerCase();
       return matchesFilter && searchable.includes(normalized);
@@ -334,6 +345,58 @@ export function ProjectsSection() {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {filteredAdditionalProjects.length > 0 && (
+        <div className="mt-12">
+          <div className="mb-5">
+            <h3 className="font-display text-2xl font-semibold">Additional Projects</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-muted-foreground">
+              Smaller experiments and prototypes kept separate from the four resume-featured projects.
+            </p>
+          </div>
+          <motion.div layout className="grid gap-5 lg:grid-cols-2">
+            <AnimatePresence mode="popLayout">
+              {filteredAdditionalProjects.map((project) => (
+                <motion.article
+                  key={project.slug}
+                  layout
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  whileHover={hoverLift}
+                >
+                  <Card className="group h-full cursor-pointer overflow-hidden p-0" onClick={() => setSelectedProject(project)}>
+                    <div className="aspect-[16/9] overflow-hidden border-b border-border/70">
+                      <img
+                        src={project.image[0].src}
+                        alt={project.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-5">
+                      <div className="flex flex-wrap gap-2">
+                        {project.categories.map((category) => (
+                          <Badge key={category}>{category}</Badge>
+                        ))}
+                      </div>
+                      <h3 className="mt-4 font-display text-2xl font-semibold">{project.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-muted-foreground">{project.overview}</p>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {project.techStack.slice(0, 5).map((tech) => (
+                          <Badge key={tech} className="bg-primary/10 text-primary">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                </motion.article>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      )}
 
       <AnimatePresence>
         {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}

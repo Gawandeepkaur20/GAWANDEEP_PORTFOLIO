@@ -14,7 +14,7 @@ export function MarkdownMessage({ content }: { content: string }) {
   const lines = content.split("\n");
 
   return (
-    <div className="space-y-3 text-sm leading-7 text-muted-foreground">
+    <div className="space-y-3 overflow-hidden text-sm leading-7 text-muted-foreground">
       {lines.map((line, index) => {
         if (!line.trim()) return null;
         if (line.startsWith("### ")) {
@@ -36,12 +36,16 @@ export function MarkdownMessage({ content }: { content: string }) {
         }
         if (line.startsWith("- ")) {
           return (
-            <p key={`${line}-${index}`} className="pl-3">
+            <p key={`${line}-${index}`} className="break-words pl-3 leading-7">
               {renderInline(line)}
             </p>
           );
         }
-        return <p key={`${line}-${index}`}>{renderInline(line)}</p>;
+        return (
+          <p key={`${line}-${index}`} className="break-words leading-7 text-pretty">
+            {renderInline(line)}
+          </p>
+        );
       })}
       <Badge className="mt-2">Local knowledge base</Badge>
     </div>

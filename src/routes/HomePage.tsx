@@ -5,17 +5,13 @@ import { Seo } from "@/components/Seo";
 import { AboutSection } from "@/sections/AboutSection";
 import { AchievementsSection } from "@/sections/AchievementsSection";
 import { CertificationsSection } from "@/sections/CertificationsSection";
-import { CurrentlyBuildingSection } from "@/sections/CurrentlyBuildingSection";
 import { EducationSection } from "@/sections/EducationSection";
 import { ExperienceSection } from "@/sections/ExperienceSection";
-import { FunFactsSection } from "@/sections/FunFactsSection";
-import { PhilosophySection } from "@/sections/PhilosophySection";
 import { ProjectsSection } from "@/sections/ProjectsSection";
 import { ProductModulesSection } from "@/sections/ProductModulesSection";
+import { ResearchSection } from "@/sections/ResearchSection";
 import { ResumeSection } from "@/sections/ResumeSection";
 import { SkillsSection } from "@/sections/SkillsSection";
-import { TechStackSection } from "@/sections/TechStackSection";
-
 
 export default function HomePage() {
   return (
@@ -26,16 +22,12 @@ export default function HomePage() {
       <AboutSection />
       <ProductModulesSection />
       <SkillsSection />
-      <ProjectsSection />
-      <PhilosophySection />
       <ExperienceSection />
-      <EducationSection />
-      <AchievementsSection />
+      <ProjectsSection />
+      <ResearchSection />
       <CertificationsSection />
-      <TechStackSection />
-      <CurrentlyBuildingSection />
-      <FunFactsSection />
-     
+      <AchievementsSection />
+      <EducationSection />
       <ResumeSection />
     </PageTransition>
   );

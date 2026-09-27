@@ -3,14 +3,16 @@ import { PageTransition } from "@/layouts/PageTransition";
 import { Seo } from "@/components/Seo";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Card } from "@/components/ui/Card";
-import { achievements, experiences, projects, skills } from "@/data/portfolio";
+import { achievements, additionalProjects, certificates, experiences, projects, researchWork, skills } from "@/data/portfolio";
 
 const metrics = [
-  { label: "Projects completed", value: projects.length, description: "Documented portfolio case studies." },
-  { label: "Years coding", value: 3, description: "Consistent learning and implementation." },
-  { label: "Technologies used", value: new Set(skills.map((skill) => skill.name)).size, description: "Across frontend, backend, AI, cloud, and tools." },
-  { label: "Experience entries", value: experiences.length, description: "Leadership and applied AI experience." },
-  { label: "Achievements", value: achievements.length, description: "Cloud, AI, leadership, and workshop milestones." },
+  { label: "Featured projects", value: projects.length, description: "Resume-aligned project case studies." },
+  { label: "Additional projects", value: additionalProjects.length, description: "Separate experiments and prototypes." },
+  { label: "Technologies listed", value: new Set(skills.map((skill) => skill.name)).size, description: "Across resume-aligned skill categories." },
+  { label: "Internships", value: experiences.length, description: "Resume-listed internship entries." },
+  { label: "Research entries", value: researchWork.length, description: "Academic research records." },
+  { label: "Certificates", value: certificates.length, description: "Listed certifications." },
+  { label: "Achievements", value: achievements.length, description: "Leadership and achievement entries." },
 ];
 
 export default function AnalyticsPage() {
@@ -24,7 +26,7 @@ export default function AnalyticsPage() {
           <p className="mt-4 max-w-2xl text-muted-foreground">
             Optional analytics IDs can enable Vercel Analytics or Google Analytics later while this local dashboard keeps portfolio signals visible.
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {metrics.map((metric) => (
               <Card key={metric.label} className="h-full">
                 <BarChart3 className="h-5 w-5 text-primary" />

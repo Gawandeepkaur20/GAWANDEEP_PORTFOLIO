@@ -33,7 +33,7 @@ export function Seo({ title, description = siteConfig.description, path = "/" }:
           url: siteConfig.url,
           description,
           sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
-          knowsAbout: ["Artificial Intelligence", "Full Stack Development", "React", "TypeScript", "Cloud", "Automation"],
+          knowsAbout: ["Artificial Intelligence", "Full Stack Development", "React.js", "Node.js", "MongoDB", "Python", "Computer Vision"],
         })}
       </script>
     </Helmet>

@@ -10,8 +10,8 @@ export function ExperienceSection() {
     <Section
       id="experience"
       eyebrow="Experience"
-      title="Leadership and applied AI experience with a builder's bias."
-      description="An interactive vertical timeline focused on responsibilities, outcomes, and the technology behind the work."
+      title="Internship experience across AI and full-stack development."
+      description="A timeline of resume-listed internships and the technology behind each role."
     >
       <div className="relative mx-auto max-w-4xl">
         <div className="absolute left-4 top-0 h-full w-px bg-border md:left-1/2" aria-hidden="true" />

@@ -5,16 +5,16 @@ import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { fadeUp } from "@/animations/motion";
 
-const coursework = ["Data Structures", "Database Systems", "Operating Systems", "Computer Networks", "Software Engineering", "AI Fundamentals"];
-const interests = ["Applied AI", "Full Stack Architecture", "Automation", "Cloud Systems", "Developer Tools"];
+const coursework = ["Data Structures & Algorithms", "OOP", "DBMS", "Operating Systems", "Computer Networks"];
+const interests = ["AI", "Full Stack Development", "LLM Integration", "Computer Vision", "Practical Web Applications"];
 
 export function EducationSection() {
   return (
     <Section
       id="education"
       eyebrow="Education"
-      title="Computer science foundation with an applied product lens."
-      description="Academic work supports Gawandeep's focus on intelligent software, reliable systems, and strong implementation fundamentals."
+      title="Computer science foundation for AI and full-stack work."
+      description="Academic work at Punjabi University Patiala supports practical software development and AI project work."
       className="bg-surface/25"
     >
       <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
@@ -24,9 +24,10 @@ export function EducationSection() {
               <GraduationCap className="h-7 w-7" aria-hidden="true" />
             </div>
             <h3 className="font-display text-2xl font-semibold">Punjabi University Patiala</h3>
-            <p className="mt-2 text-muted-foreground">B.Tech Computer Science Engineering</p>
+            <p className="mt-2 text-muted-foreground">B.Tech Computer Science & Engineering</p>
+            <p className="mt-2 text-sm text-muted-foreground">CGPA: 8.72/10 up to 6th semester</p>
             <p className="mt-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-              Expected Graduation: 2027
+              2023 - 2027
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
